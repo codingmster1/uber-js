@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "uber-js",
-    "slug": "uber-js",
+    "name": "Uber",
+    "slug": "Uber",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/uber_splash_screen.gif",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
