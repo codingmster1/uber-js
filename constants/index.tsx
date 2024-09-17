@@ -76,7 +76,7 @@ export const onboarding = [
     id: 1,
     title: "The perfect ride is just a tap away!",
     description:
-      "Your journey begins with Ryde. Find your ideal ride effortlessly.",
+      "Your journey begins with Ryde. Find your ideal ride easily.",
     image: images.onboarding1,
   },
   {
@@ -88,9 +88,9 @@ export const onboarding = [
   },
   {
     id: 3,
-    title: "Your ride, your way. Let's go!",
+    title: "Your ride, your way.",
     description:
-      "Enter your destination, sit back, and let us take care of the rest.",
+      "Enter your destination, then let us handle the rest.",
     image: images.onboarding3,
   },
 ];
