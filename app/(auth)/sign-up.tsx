@@ -173,7 +173,7 @@ const SignUp = () => {
               />
             </View>
           </ReactNativeModal>
-          <ReactNativeModal isVisible={showSuccessModal}>
+          <ReactNativeModal isVisible={verification.state === 'success'}>
             <View className="bg-white px-7 py-9 rounded-2xl min-h-[300px]">
               <Image
                 source={images.check}
@@ -183,7 +183,7 @@ const SignUp = () => {
                 Verified
               </Text>
               <Text className="text-base text-gray-400 font-Jakarta text-center mt-2">
-                You have successfully verified your account.
+                Account Verified!
               </Text>
               <CustomButton
                 title="Browse Home"
