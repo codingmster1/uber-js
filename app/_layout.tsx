@@ -8,8 +8,6 @@ import { tokenCache } from "@/lib/auth";
 import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo'
 import { Slot } from 'expo-router'
 
-/* import { tokenCache } from "../lib/auth"; */
-
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -62,7 +60,7 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkProvider /* tokenCache={tokenCache} */ publishableKey={publishableKey}>
+    <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
     <ClerkLoaded>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
