@@ -1,7 +1,10 @@
+import RideCard from '@/app/components/RideCard'
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from 'expo-router'
 import { Text, View } from 'react-native'
-
+import { FlatList } from 'react-native-gesture-handler'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 const recentRides = 
 [
     {
@@ -107,18 +110,14 @@ export default function Page() {
   const { user } = useUser()
 
   return (
-    <View>
-      <SignedIn>
-        <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
-      </SignedIn>
-      <SignedOut>
-        <Link href="/sign-in">
-          <Text>Sign In</Text>
-        </Link>
-        <Link href="/sign-up">
-          <Text>Sign Up</Text>
-        </Link>
-      </SignedOut>
-    </View>
+    <GestureHandlerRootView>
+   <SafeAreaView className ="bg-general-500">
+    <FlatList
+data={recentRides?.slice(0, 5)}
+renderItem={({ item }) => <RideCard ride ={item} />}
+    />
+
+   </SafeAreaView>
+   </GestureHandlerRootView>
   )
 }
