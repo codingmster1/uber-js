@@ -1,11 +1,11 @@
 import RideCard from '@/app/components/RideCard'
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from 'expo-router'
-import { Text, View, Image, ActivityIndicator } from 'react-native'
+import { Text, View, Image, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { images } from '@/constants'
+import { icons, images } from '@/constants'
 const recentRides = 
 [
     {
@@ -111,6 +111,10 @@ export default function Page() {
   const { user } = useUser()
   const loading = false;
 
+const handleSignOut = () => {
+
+}
+
   return (
     <GestureHandlerRootView>
    <SafeAreaView className ="bg-general-500">
@@ -146,6 +150,18 @@ ListEmptyComponent={() => (
 </View>
 
 )}
+ListHeaderComponent={(
+    <>
+    <View className="flex flex-row items-center justify-between my-5">
+        <Text className="text-1xl capitalize font-JakartaExtraBold">Welcome {""} {user?.firstName || user?.emailAddresses[0].emailAddress}</Text>
+    <TouchableOpacity onPress={handleSignOut} className="justify-center items-center w-10 h-10 rounded-full bg-white">
+    <Image source={icons.out} className="w-4 h-4" />
+    </TouchableOpacity>
+    </View>
+    </>
+)}
+
+
 />
    </SafeAreaView>
    </GestureHandlerRootView>
