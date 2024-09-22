@@ -109,13 +109,13 @@ const recentRides =
 
 export default function Page() {
   const { user } = useUser()
-  const loading = true;
+  const loading = false;
 
   return (
     <GestureHandlerRootView>
    <SafeAreaView className ="bg-general-500">
     <FlatList
-data={[]}/* {recentRides?.slice(0, 5)} */
+data={recentRides?.slice(0, 5)}/* {recentRides?.slice(0, 5)} */
 renderItem={({ item }) => <RideCard ride ={item} />}
 keyExtractor={(item, index) => index.toString()}
 className="px-5"
