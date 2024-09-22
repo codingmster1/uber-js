@@ -1,10 +1,11 @@
 import RideCard from '@/app/components/RideCard'
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from 'expo-router'
-import { Text, View } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { images } from '@/constants'
 const recentRides = 
 [
     {
@@ -108,15 +109,34 @@ const recentRides =
 
 export default function Page() {
   const { user } = useUser()
+  const loading = false;
 
   return (
     <GestureHandlerRootView>
    <SafeAreaView className ="bg-general-500">
     <FlatList
-data={recentRides?.slice(0, 5)}
+data={[]}/* {recentRides?.slice(0, 5)} */
 renderItem={({ item }) => <RideCard ride ={item} />}
-    />
+keyExtractor={(item, index) => index.toString()}
+className="px-5"
+keyboardShouldPersistTaps="handled"
+contentContainerStyle={{
+  paddingBottom: 100,
+}}
+ListEmptyComponent={() => (
+    <View className="flex flex-col items-center justify-center">
+        {!loading ? (
+            <>
+            <Image source={images.noResult}/>
+            </>
+        ) : (
+            <Text>Loading</Text>
+        )}
+  {/* <Text className="text-sm">No recent rides found</Text> */}
+</View>
 
+)}
+/>
    </SafeAreaView>
    </GestureHandlerRootView>
   )
