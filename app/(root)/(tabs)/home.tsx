@@ -127,7 +127,11 @@ ListEmptyComponent={() => (
     <View className="flex flex-col items-center justify-center">
         {!loading ? (
             <>
-            <Image source={images.noResult}/>
+            <Image source={images.noResult}
+            className="w-45 h-40"
+            alt="No recent rides found"
+            resizeMode="contain"
+            />
             </>
         ) : (
             <Text>Loading</Text>
