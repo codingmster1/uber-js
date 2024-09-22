@@ -1,7 +1,7 @@
 import RideCard from '@/app/components/RideCard'
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link } from 'expo-router'
-import { Text, View, Image } from 'react-native'
+import { Text, View, Image, ActivityIndicator } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -109,7 +109,7 @@ const recentRides =
 
 export default function Page() {
   const { user } = useUser()
-  const loading = false;
+  const loading = true;
 
   return (
     <GestureHandlerRootView>
@@ -128,13 +128,19 @@ ListEmptyComponent={() => (
         {!loading ? (
             <>
             <Image source={images.noResult}
-            className="w-45 h-40"
+            className="w-40 h-40"
             alt="No recent rides found"
             resizeMode="contain"
             />
+             <Text className="text-sm">No recent rides found</Text>
             </>
         ) : (
-            <Text>Loading</Text>
+            <Image source={images.loadState}
+            className="w-45 h-40 mt-5"
+            alt="No recent rides found"
+            resizeMode="contain"/>
+           
+            /*  <ActivityIndicator size="small" color="#000" /> */
         )}
   {/* <Text className="text-sm">No recent rides found</Text> */}
 </View>
