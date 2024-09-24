@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { icons, images } from '@/constants'
 import GoogleTextInput from '@/app/components/GoogleTextInput';
+import Map from '@/app/components/Map'
 
 
 
@@ -169,6 +170,17 @@ ListHeaderComponent={(
     containerStyle="bg-white shadow-md shadow-neutral-300"
     handlePress={handleDestinationPress}
     />
+    <>
+    <Text className="text-xl font-JakartaBold mt-5 mb-3">
+    Your current location
+    </Text>
+    <View className="flex flex-row items-center bg-transparent h-[300px]">
+                <Map />
+              </View>
+    </>
+    <Text className="text-xl font-JakartaBold mt-5 mb-3">
+              Recent Rides
+            </Text>
     </>
 )}
 
