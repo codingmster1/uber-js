@@ -8,7 +8,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { icons, images } from '@/constants'
 import GoogleTextInput from '@/app/components/GoogleTextInput';
 import Map from '@/app/components/Map'
-
+import { useLocationStore } from '@/app/store'
+import { useEffect, useState } from 'react'
+import * as Location from "expo-location";
 
 
 
@@ -117,9 +119,19 @@ export default function Page() {
   const { user } = useUser()
   const loading = false;
 
+  const { setUserLocation, setDestinationLocation } = useLocationStore();
+ const [hasPermission, setHasPermission] = useState<boolean>(false);
+
+
 const handleSignOut = () => {}
 const handleDestinationPress = () => {}
 
+useEffect(() => {
+const requestLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+}
+requestLocation()
+},[])
 
   return (
     <GestureHandlerRootView>
