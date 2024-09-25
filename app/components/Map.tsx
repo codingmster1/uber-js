@@ -139,9 +139,25 @@ export default Map; */
 
 import { View, Text } from "react-native";
 import MapView, { PROVIDER_DEFAULT } from "react-native-maps";
+import { useLocationStore } from "../store";
+import { calculateRegion } from "@/lib/map";
 
 
 const Map = () => {
+  const {
+    userLongitude,
+    userLatitude,
+    destinationLatitude,
+    destinationLongitude,
+  } = useLocationStore();
+
+
+  const region = calculateRegion({
+    userLatitude,
+    userLongitude,
+    destinationLatitude,
+    destinationLongitude,
+  });
 return (
   <MapView
   provider={PROVIDER_DEFAULT} 
