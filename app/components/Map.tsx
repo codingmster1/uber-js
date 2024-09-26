@@ -214,7 +214,8 @@ const Map = () => {
 
       setMarkers(newMarkers);
     }
-      }, [drivers]);
+
+    }, [drivers]);
 return (
   <MapView
   provider={PROVIDER_DEFAULT} 
@@ -226,7 +227,7 @@ return (
  showsUserLocation={true}
  userInterfaceStyle="light"
   >
-    {markers.map((marker, index) => (
+    {markers.map((marker) => (
     <Marker 
     key={marker.id}
           coordinate={{
