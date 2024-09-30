@@ -1,6 +1,6 @@
 import RideCard from '@/app/components/RideCard'
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { Text, View, Image, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -124,7 +124,15 @@ export default function Page() {
 
 
 const handleSignOut = () => {}
-const handleDestinationPress = () => {}
+const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+
+    router.push("/(root)/find-ride");
+  }
 
 useEffect(() => {
 const requestLocation = async () => {
@@ -191,7 +199,7 @@ ListEmptyComponent={() => (
 ListHeaderComponent={(
     <>
     <View className="flex flex-row items-center justify-between my-5">
-        <Text className="text-1xl capitalize font-JakartaExtraBold">Welcome {""} {user?.firstName || user?.emailAddresses[0].emailAddress}</Text>
+        <Text className="text-1xl font-JakartaExtraBold">Welcome {user?.emailAddresses[0].emailAddress}</Text>
     <TouchableOpacity onPress={handleSignOut} className="justify-center items-center w-10 h-10 rounded-full bg-white">
     <Image source={icons.out} className="w-4 h-4" />
     </TouchableOpacity>
