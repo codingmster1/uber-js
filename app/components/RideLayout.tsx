@@ -7,7 +7,9 @@ import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useRef } from "react";
 
-const RideLayout = ({ title, children }: { title: string;  children: React.ReactNode}) => {
+const RideLayout = ({ title, children, snapPoints, }: { title: string;  children: React.ReactNode
+  snapPoints?: string[];
+}) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
   return (
  <GestureHandlerRootView>
@@ -29,8 +31,9 @@ const RideLayout = ({ title, children }: { title: string;  children: React.React
     <Map />
   </View>
   <BottomSheet 
+/*   keyboardBehavior="extend" */
   ref={bottomSheetRef}
-  snapPoints = {["40%", "85%"]}
+  snapPoints = { snapPoints=["40%", "85%"]}
   index={0}
   >
      <BottomSheetView
