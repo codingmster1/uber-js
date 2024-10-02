@@ -3,9 +3,13 @@ import { router } from "expo-router";
 import { Image, Text, TouchableOpacity, TouchableOpacityBase, View } from "react-native"
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Map from "./Map";
+import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
+import BottomSheet from "@gorhom/bottom-sheet";
+import { useRef } from "react";
 
 const RideLayout = ({ title, children }: { title: string;  children: React.ReactNode}) => {
-return (
+  const bottomSheetRef = useRef<BottomSheet>(null);
+  return (
  <GestureHandlerRootView>
 <View className="flex-1 bg-white">
   <View className="flex flex-col h-screen bg-blue-500">
@@ -24,6 +28,20 @@ return (
     </View>
     <Map />
   </View>
+  <BottomSheet 
+  ref={bottomSheetRef}
+  snapPoints = {["40%", "85%"]}
+  index={0}
+  >
+     <BottomSheetView
+              style={{
+                flex: 1,
+                padding: 20,
+              }}
+            >
+              {children}
+            </BottomSheetView>
+  </BottomSheet>
   </View> 
  </GestureHandlerRootView>
 )
