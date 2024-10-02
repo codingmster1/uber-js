@@ -145,7 +145,7 @@ import { useEffect, useState } from "react";
 import { MarkerData } from "@/types/type";
 import { icons } from "@/constants";
 
-const drivers = [
+const drivers = 
   [
     {
         "id": "1",
@@ -184,7 +184,7 @@ const drivers = [
         "rating": "4.90"
     }
 ]
-]
+
 
 const Map = () => {
   const {
