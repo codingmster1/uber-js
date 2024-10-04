@@ -6,7 +6,7 @@ import { router } from "expo-router";
 import { useDriverStore } from "../store";
 
 
-const drivers = [
+/* const drivers = [
       {
           "id": "1",
           "first_name": "James",
@@ -43,37 +43,29 @@ const drivers = [
           "car_seats": 4,
           "rating": "4.90"
       }
-  ]
+  ] */
 
  const ConfirmRide = () => {
-    const { drivers, selectedDriver, setSelectedDriver} = useDriverStore();
+    const { drivers, selectedDriver, setSelectedDriver} = 
+    useDriverStore();
 
-
-
-
- return (
-    <RideLayout title={"Choose a Rider"} snapPoints={["65%", "85%"]}>
-    <FlatList
-      data={drivers}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item, index }) => (
-        <DriverCard
-          item={item}
-          selected={selectedDriver!}
-          setSelected={() => setSelectedDriver(item.id!)}
-        />
-      )}
-      ListFooterComponent={() => (
-        <View className="mx-5 mt-10">
-          <CustomButton
-            title="Select Ride"
+return (
+    <RideLayout title ="Choose a Driver" snapPoints={["65%", "85%"]}>
+ <FlatList 
+ data={drivers} 
+ renderItem={({item}) => <DriverCard selected={selectedDriver!} setSelected={() => setSelectedDriver(item.id)} 
+ item={item} />}
+ ListFooterComponent={() => (
+    <View className="mx-5 mt-10">
+        <CustomButton
+            title="Confirm Ride"
             onPress={() => router.push("/(root)/book-ride")}
-          />
-        </View>
-      )}
     />
-  </RideLayout>
-);
+            </View>
+ )}
+ />
+</RideLayout>
+ );
 };
 
 export default ConfirmRide;
