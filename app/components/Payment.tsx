@@ -24,7 +24,7 @@ const Payment = () => {
           amount: 1099,
           currencyCode: 'USD',
         },
-        confirmHandler: confirmHandler
+        confirmHandler: confirmHandler,
       }
     });
     if (error) {
@@ -38,15 +38,17 @@ const Payment = () => {
     initializePaymentSheet();
   }, []);
 
-/*   const confirmHandler = async (
+  const confirmHandler = async (
     paymentMethod, 
     shouldSavePaymentMethod, 
     intentCreationCallback) => {
    
-  } */
+  }
 
   const didTapCheckoutButton = async () => {
   }
+
+
   const openPaymentSheet = async () => {
     await initializePaymentSheet();
     const { error } = await presentPaymentSheet();
