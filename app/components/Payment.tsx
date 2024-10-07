@@ -1,5 +1,5 @@
 import { useAuth } from "@clerk/clerk-expo";
-import { useStripe } from "@stripe/stripe-react-native";
+import { PaymentSheetError, useStripe } from "@stripe/stripe-react-native";
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { Alert, Image, Text, View } from "react-native";
@@ -31,32 +31,34 @@ const Payment = () => {
     }
   };
 
-  
 
-  const fetchPublishableKey = async () => {
-/* const key = await fetchKey();
-setPublishableKey(key); */
-  }
-
-  useEffect(() => {
-  fetchPublishableKey();
-  }, []);
 
   useEffect(() => {
     initializePaymentSheet();
   }, []);
 
-  const confirmHandler = async (
+/*   const confirmHandler = async (
     paymentMethod, 
     shouldSavePaymentMethod, 
     intentCreationCallback) => {
    
-  }
+  } */
 
   const didTapCheckoutButton = async () => {
-  
   }
-  const openPaymentSheet = async () => {};
+  const openPaymentSheet = async () => {
+    const { error } = await presentPaymentSheet();
+
+    if (error) {
+      if (error.code === PaymentSheetError.Canceled) {
+        // Customer canceled - you should probably do nothing.
+      } else {
+        // PaymentSheet encountered an unrecoverable error. You can display the error to the user, log it, etc.
+      }
+    } else {
+      // Payment completed - show a confirmation screen.
+    }
+  };
   return (
    <>
     <CustomButton 
