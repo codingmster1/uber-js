@@ -14,23 +14,9 @@ import { useEffect, useState } from "react";
 
 
 const BookRide = () => {
-    const {user} = useUser();
+    /* const {user} = useUser(); */
     const {userAddress, destinationAddress} = useLocationStore();
     const {drivers, selectedDriver} = useDriverStore();
-
-    const {publishableKey, setPublishableKey} = useState("");
-
-    const fetchPublishableKey = async () => {
-const key = await fetchKey();
-setPublishableKey(key);
-    }
-
-    useEffect(() => {
-    fetchPublishableKey();
-    }, []);
-
-console.log({ drivers });
-console.log({ selectedDriver });
 
     const driverDetails = drivers?.filter(
         (driver) => +driver.id === selectedDriver,

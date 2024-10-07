@@ -11,6 +11,7 @@ import { fetchAPI } from "@/lib/fetch";
 import { useLocationStore } from "../store";
 import { PaymentProps } from "@/types/type";
 
+
 const Payment = () => {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
 
@@ -29,6 +30,17 @@ const Payment = () => {
       // handle error
     }
   };
+
+  
+
+  const fetchPublishableKey = async () => {
+/* const key = await fetchKey();
+setPublishableKey(key); */
+  }
+
+  useEffect(() => {
+  fetchPublishableKey();
+  }, []);
 
   useEffect(() => {
     initializePaymentSheet();
