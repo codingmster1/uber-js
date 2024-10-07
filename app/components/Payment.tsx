@@ -51,12 +51,8 @@ const Payment = () => {
     await initializePaymentSheet();
     const { error } = await presentPaymentSheet();
 
-    if (error) {
-      if (error.code === PaymentSheetError.Canceled) {
+    if (error) { 
         Alert.alert(`Error code: ${error.code}`, error.message);
-      } else {
-        // PaymentSheet encountered an unrecoverable error. You can display the error to the user, log it, etc.
-      }
     } else {
       setSuccess(true);
     }
