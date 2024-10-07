@@ -7,6 +7,7 @@ import {formatTime} from "@/lib/utils";
 import {useDriverStore, useLocationStore} from "../store";
 import Payment from "../components/Payment";
 import { StripeProvider } from "@stripe/stripe-react-native";
+import { useEffect, useState } from "react";
 
 
 
@@ -17,6 +18,16 @@ const BookRide = () => {
     const {userAddress, destinationAddress} = useLocationStore();
     const {drivers, selectedDriver} = useDriverStore();
 
+    const {publishableKey, setPublishableKey} = useState("");
+
+    const fetchPublishableKey = async () => {
+const key = await fetchKey();
+setPublishableKey(key);
+    }
+
+    useEffect(() => {
+    fetchPublishableKey();
+    }, []);
 
 console.log({ drivers });
 console.log({ selectedDriver });
