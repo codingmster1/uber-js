@@ -109,7 +109,7 @@ const RideCard = ({ ride }: { ride: Ride }) => {
               </View>
   
               <View className="flex flex-row items-center gap-x-2">
-                <Image source={icons.point} className="w-5 h-5" />
+                <Image source={icons.point} className="w-5 h-5 " />
                 <Text className="text-md font-JakartaMedium" numberOfLines={1}>
                   {ride.destination_address}
                 </Text>
