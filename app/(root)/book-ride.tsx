@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 
 
 const BookRide = () => {
-    /* const {user} = useUser(); */
+    const {user} = useUser();
     const {userAddress, destinationAddress} = useLocationStore();
     const {drivers, selectedDriver} = useDriverStore();
 
@@ -98,6 +98,11 @@ const BookRide = () => {
             </View>
   
             <Payment
+             fullName={user?.fullName!}
+             email={user?.emailAddresses[0].emailAddress!}
+             amount={driverDetails?.price!}
+             driverId={driverDetails?.id}
+             rideTime={driverDetails?.time!}
             />
           </>
         </RideLayout>
