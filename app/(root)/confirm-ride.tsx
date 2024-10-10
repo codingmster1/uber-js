@@ -18,7 +18,7 @@ return (
  renderItem={({item}) => <DriverCard selected={selectedDriver!} setSelected={() => setSelectedDriver(Number(item.id)!)} 
  item={item} />}
  ListFooterComponent={() => (
-    <View className="mx-5 mt-10">
+    <View className="mx-20 mt-0">
         <CustomButton
             title="Confirm Ride"
             onPress={() => router.push("/(root)/book-ride")}

@@ -127,7 +127,7 @@ const Payment = ({
     <>
       <CustomButton
         title="Confirm Ride"
-        className="my-10"
+        className="my-15"
         onPress={openPaymentSheet}
       />
 
@@ -135,8 +135,8 @@ const Payment = ({
         isVisible={success}
         onBackdropPress={() => setSuccess(false)}
       >
-        <View className="flex flex-col items-center justify-center bg-white p-7 rounded-2xl">
-          <Image source={images.check} className="w-28 h-28 mt-5" />
+        <View className="flex flex-col items-center justify-center bg-white p-5 rounded-1xl">
+          <Image source={images.check} className="w-28 h-20 mt-3" />
 
           <Text className="text-2xl text-center font-JakartaBold mt-5">
             Booking placed successfully
