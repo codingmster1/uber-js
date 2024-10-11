@@ -140,7 +140,7 @@ export default Map; */
 import { View, Text, ActivityIndicator } from "react-native";
 import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 import { useDriverStore, useLocationStore } from "../store";
-import { calculateRegion, generateMarkersFromData } from "@/lib/map";
+import { calculateDriverTimes, calculateRegion, generateMarkersFromData } from "@/lib/map";
 import { useEffect, useState } from "react";
 import { MarkerData } from "@/types/type";
 import { icons } from "@/constants";
@@ -166,8 +166,6 @@ const Map = () => {
     destinationLongitude,
   });
   useEffect( () => {
-    setDrivers(drivers);
-
     if (Array.isArray(drivers)) {
       if (!userLatitude || !userLongitude) return;
 
@@ -181,6 +179,26 @@ const Map = () => {
     }
 
     }, [drivers, userLatitude, userLongitude]);
+
+    useEffect(() => {
+      if (
+        markers.length > 0 &&
+        destinationLatitude !== undefined &&
+        destinationLongitude !== undefined
+      ) {
+        calculateDriverTimes({
+          markers,
+          userLatitude,
+          userLongitude,
+          destinationLatitude,
+          destinationLongitude,
+        }).then((drivers) => {
+          setDrivers(drivers as MarkerData[]);
+        });
+      }
+    }, [markers, destinationLatitude, destinationLongitude]);
+
+
 
     if (loading || (!userLatitude && !userLongitude))
       return (
