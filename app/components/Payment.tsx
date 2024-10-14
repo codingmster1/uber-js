@@ -127,7 +127,7 @@ const Payment = ({
     <>
       <CustomButton
         title="Confirm Ride"
-        className="my-15"
+        className="mt-15"
         onPress={openPaymentSheet}
       />
 
