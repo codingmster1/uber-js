@@ -21,7 +21,7 @@ const Payment = ({
 }: PaymentProps) => {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const { userId } = useAuth();
-  const [success, setSuccess] = useState(true);
+  const [success, setSuccess] = useState(false);
   const {
     userAddress,
     userLongitude,
@@ -47,11 +47,11 @@ const Payment = ({
 
   const initializePaymentSheet = async () => {
     const { error } = await initPaymentSheet({
-      merchantDisplayName: "Example, Inc.",
+      merchantDisplayName: "Ryde, Inc.",
       intentConfiguration: {
         mode: {
           amount: parseInt(amount) * 100,
-          currencyCode: "usd",
+          currencyCode: "USD",
         },
         confirmHandler: async (
           paymentMethod,
@@ -130,7 +130,7 @@ const Payment = ({
       <CustomButton
         title="Confirm Ride"
         className="mt-15"
-       /*  onPress={openPaymentSheet} */
+        onPress={openPaymentSheet}
       />
 
       <ReactNativeModal
