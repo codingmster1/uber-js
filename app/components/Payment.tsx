@@ -20,6 +20,8 @@ const Payment = ({
   rideTime,
 }: PaymentProps) => {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
+  const { userId } = useAuth();
+  const [success, setSuccess] = useState(true);
   const {
     userAddress,
     userLongitude,
@@ -29,8 +31,7 @@ const Payment = ({
     destinationLongitude,
   } = useLocationStore();
 
-  const { userId } = useAuth();
-  const [success, setSuccess] = useState<boolean>(false);
+ 
 
   const openPaymentSheet = async () => {
     await initializePaymentSheet();
@@ -129,7 +130,7 @@ const Payment = ({
       <CustomButton
         title="Confirm Ride"
         className="mt-15"
-        onPress={openPaymentSheet}
+       /*  onPress={openPaymentSheet} */
       />
 
       <ReactNativeModal
@@ -137,9 +138,9 @@ const Payment = ({
         onBackdropPress={() => setSuccess(false)}
       >
         <View className="flex flex-col items-center justify-center bg-white p-5 rounded-1xl">
-          <Image source={images.check} className="w-28 h-20 mt-3" />
+          <Image source={images.check} className="w-10 h-10 mt-3" />
 
-          <Text className="text-2xl text-center font-JakartaBold mt-5">
+           <Text className="text-2xl text-center font-JakartaBold mt-5">
             Booking placed successfully
           </Text>
 
@@ -156,7 +157,7 @@ const Payment = ({
             }}
             className="mt-5"
           />
-        </View>
+        </View> 
       </ReactNativeModal>
     </>
   );
