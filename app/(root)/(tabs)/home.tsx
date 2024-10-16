@@ -1,5 +1,5 @@
 import RideCard from '@/app/components/RideCard'
-import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
+import { SignedIn, SignedOut, useAuth, useUser } from '@clerk/clerk-expo'
 import { Link, router } from 'expo-router'
 import { Text, View, Image, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -19,7 +19,7 @@ import { Ride } from '@/types/type'
 
 export default function Page() {
   const { user } = useUser()
-  
+  const { signOut } = useAuth();
   const { setUserLocation, setDestinationLocation } = useLocationStore();
  const [hasPermission, setHasPermission] = useState<boolean>(false);
  const {
@@ -28,7 +28,10 @@ export default function Page() {
     error,
   } = useFetch<Ride[]>(`/(api)/ride/${user?.id}`);
 
-const handleSignOut = () => {}
+const handleSignOut = () => {
+    signOut();
+    router.replace("/(auth)/sign-in");
+}
 const handleDestinationPress = (location: {
     latitude: number;
     longitude: number;
