@@ -141,7 +141,7 @@ const Payment = ({
           <Image source={images.check} className="w-10 h-10 mt-3" />
 
            <Text className="text-2xl text-center font-JakartaBold mt-5">
-            Booking placed successfully
+           Ride Confirmed!
           </Text>
 
           <Text className="text-md text-general-200 font-JakartaRegular text-center mt-3">
