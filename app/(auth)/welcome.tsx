@@ -20,14 +20,14 @@ const Onboarding = () => {
         }}
         className="w-full flex justify-end items-end p-5"
       >
-        <Text className="text-black text-md font-JakartaBold">Skip</Text>
+        <Text className="text-black text-sm font-JakartaBold">Skip</Text>
       </TouchableOpacity>
 
       <Swiper
         ref={swiperRef}
         loop={false}
         dot={
-            <View className="w-[32px] h-[4px] mx-1 bg-[#E2E8F0] rounded-full" />
+            <View className="w-[32px] h-[2px] mx-1 bg-[#E2E8F0] rounded-full" />
           }
           activeDot={
             <View className="w-[32px] h-[4px] mx-1 bg-[#0286FF] rounded-full" />
@@ -41,8 +41,8 @@ const Onboarding = () => {
               className="w-full h-[300px]"
               resizeMode="contain"
             />
-             <View className="flex flex-row items-center justify-center w-full mt-10">
-             <Text className="text-black text-3xl font-bold mx-10 text-center">
+             <View className="flex flex-row items-center justify-center w-full mt-5">
+             <Text className="text-black text-2xl mb-1 font-bold mx-10 text-center">
                 {item.title}
               </Text>
            </View>
