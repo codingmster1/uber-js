@@ -120,6 +120,7 @@ const Payment = ({
 
     if (!error) {
       // setLoading(true);
+      console.log(error)
     }
   };
 
