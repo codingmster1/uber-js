@@ -101,16 +101,16 @@ const RideCard = ({ ride }: { ride: Ride }) => {
             />
   
             <View className="flex flex-col mx-5 gap-y-5 flex-1">
-              <View className="flex flex-row items-center gap-x-2">
-                <Image source={icons.to} className="w-5 h-5" />
-                <Text className="text-md font-JakartaMedium" numberOfLines={1}>
+              <View className="flex flex-row items-center gap-x-1">
+                <Image source={icons.to} className="w-3 h-3" />
+                <Text className="text-xs font-JakartaMedium" numberOfLines={1}>
                   {ride.origin_address}
                 </Text>
               </View>
   
-              <View className="flex flex-row items-center gap-x-2">
-                <Image source={icons.point} className="w-5 h-5 " />
-                <Text className="text-md font-JakartaMedium" numberOfLines={1}>
+              <View className="flex flex-row items-center gap-x-1">
+                <Image source={icons.point} className="w-3 h-3"/>
+                <Text className="text-xs font-JakartaMedium" numberOfLines={1}>
                   {ride.destination_address}
                 </Text>
               </View>

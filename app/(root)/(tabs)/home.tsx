@@ -76,7 +76,7 @@ requestLocation()
 data={recentRides?.slice(0, 5)}/* {recentRides?.slice(0, 5)} */
 renderItem={({ item }) => <RideCard ride ={item} />}
 keyExtractor={(item, index) => index.toString()}
-className="px-5"
+className="px-5 font-md"
 keyboardShouldPersistTaps="handled"
 contentContainerStyle={{
   paddingBottom: 100,
@@ -126,7 +126,7 @@ ListHeaderComponent={(
                 <Map />
               </View>
     </>
-    <Text className="text-xl font-JakartaBold mt-5 mb-3">
+    <Text className="text-md font-JakartaBold mt-5 mb-3">
               Recent Rides
             </Text>
     </>
